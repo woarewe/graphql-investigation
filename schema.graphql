@@ -5,7 +5,14 @@ type Mutation {
   testField: String!
 }
 
+type Post {
+  id: ID!
+  title: String
+}
+
 type Query {
+  posts(after: String, first: Int): [Post!]
+
   """
   An example field added by the generator
   """

@@ -13,5 +13,7 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :posts, resolver: Queries::Posts
   end
 end
