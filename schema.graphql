@@ -1,3 +1,9 @@
+type Category {
+  id: ID!
+  name: String
+  posts(ids: [ID!]): [Post!]!
+}
+
 type Mutation {
   """
   An example field added by the generator
@@ -6,15 +12,12 @@ type Mutation {
 }
 
 type Post {
+  category: Category!
   id: ID!
   title: String
 }
 
 type Query {
-  posts(after: String, first: Int): [Post!]
-
-  """
-  An example field added by the generator
-  """
-  testField: String!
+  categories(ids: [ID!]): [Category!]
+  posts(ids: [ID!]): [Post!]
 }

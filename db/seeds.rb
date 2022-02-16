@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
-20.times { |i| Post.create!(title: "Post ##{i}")}
+categories = 20.times.map { |i| Category.create!(name: "Category ##{i}") }
+100.times { |i| Post.create!(title: "Post ##{i}", category_id: categories.sample.id) }
