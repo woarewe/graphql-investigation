@@ -21,7 +21,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_16_210439) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "posts_categories", force: :cascade do |t|
     t.bigint "category_id", null: false
+    t.bigint "post_id", null: false
   end
 
 end

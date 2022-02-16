@@ -6,5 +6,17 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-categories = 20.times.map { |i| Category.create!(name: "Category ##{i}") }
-100.times { |i| Post.create!(title: "Post ##{i}", category_id: categories.sample.id) }
+ActiveRecord::Base.transaction do
+  categories = 30.times.map { |i| Category.create!(name: "Category ##{i}") }
+  posts = 30.times.map { |i| Post.create!(title: "Post ##{i}") }
+
+  categories.each do |category|
+    category.posts = posts.shuffle.first(10)
+  end
+
+  posts.map(&:reload).each do |post|
+    next if post.categories.present?
+
+    post.categories = categories.shuffle.first(10)
+  end
+end

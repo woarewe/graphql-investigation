@@ -1,7 +1,7 @@
 type Category {
   id: ID!
   name: String
-  posts(ids: [ID!]): [Post!]!
+  posts: [Post!]!
 }
 
 type Mutation {
@@ -12,7 +12,7 @@ type Mutation {
 }
 
 type Post {
-  category: Category!
+  categories(ids: [ID!]): [Category!]!
   id: ID!
   title: String
 }

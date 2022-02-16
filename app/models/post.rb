@@ -1,3 +1,4 @@
 class Post < ApplicationRecord
-  belongs_to :category
+  has_many :posts_categories
+  has_many :categories, through: :posts_categories
 end
